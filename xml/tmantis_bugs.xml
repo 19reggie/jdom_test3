@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mantis version="1.2.19" urlbase="http://www.wangzhanmeng.com/mantis/"
+	issuelink="#" notelink="~" format="1">
+<issue>
+		<id>1001</id>
+		<project id="3">1509项目</project>
+		<reporter id="1083">张三</reporter>
+		<handler id="1084">李四</handler>
+		<priority id="60">中</priority>
+		<severity id="80">严重</severity>
+		<reproducibility id="10">随机</reproducibility>
+		<status id="20">激活</status>
+		<resolution id="30">无</resolution>
+		<projection id="10">无</projection>
+		<category id="131">无</category>
+		<date_submitted>1474186992</date_submitted>
+		<last_updated>1474197516</last_updated>
+		<eta id="10">无</eta>
+		<os>无</os>
+		<os_build>无</os_build>
+		<platform>无</platform>
+		<view_state id="10">无</view_state>
+		<summary>无</summary>
+		<due_date>无</due_date>
+		<profile_id>无</profile_id>
+		<description>系统语言在英语与中文之间切换时，最近通话及联系人tab的翻译未及时更新</description>
+		<steps_to_reproduce>1、当前设置系统语言为英语后，进入电话联系人界面2、按home挂后台3、切换系统语言为中文后，再进入电话联系人界面</steps_to_reproduce>
+		<additional_information>电话联系人界面仍显示为英文</additional_information>
+	</issue>
+	<issue>
+		<id>1002</id>
+		<project id="3">1509项目</project>
+		<reporter id="1083">张三</reporter>
+		<handler id="1084">王五</handler>
+		<priority id="60">高</priority>
+		<severity id="80">致命</severity>
+		<reproducibility id="10">必现</reproducibility>
+		<status id="20">激活</status>
+		<resolution id="30">无</resolution>
+		<projection id="10">无</projection>
+		<category id="131">无</category>
+		<date_submitted>1474186992</date_submitted>
+		<last_updated>1474197516</last_updated>
+		<eta id="10">无</eta>
+		<os>无</os>
+		<os_build>无</os_build>
+		<platform>无</platform>
+		<view_state id="10">无</view_state>
+		<summary>无</summary>
+		<due_date>无</due_date>
+		<profile_id>无</profile_id>
+		<description>进入sim卡信息后crash</description>
+		<steps_to_reproduce>1、打开信息界面2、点击sim卡信息</steps_to_reproduce>
+		<additional_information>信息crash</additional_information>
+	</issue>
+</mantis>
