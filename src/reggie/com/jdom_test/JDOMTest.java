@@ -20,11 +20,11 @@ import org.jdom2.input.SAXBuilder;
 
 public class JDOMTest {
 
-	static String account = "tester";// ÕË»§
-	static String password = "888888";// ÃÜÂë
-	static String loginPostUrl = "http://10.250.1.88/zentaopms/www/index.php?m=user&f=login";// µÇÂ¼ÇëÇó
-	static String bugPostUrl = "http://10.250.1.88/zentaopms/www/index.php?m=bug&f=create&productID=1&branch=0&extra=moduleID=0";// bug±íµ¥ÇëÇó
-	static String fileName = System.getProperty("user.dir") + "\\xml\\tmantis_bugs.xml";
+	static String account = "tester";// è´¦æˆ·
+	static String password = "888888";// å¯†ç 
+	static String loginPostUrl = "http://10.250.1.88/zentaopms/www/index.php?m=user&f=login";// ç™»å½•è¯·æ±‚
+	static String bugPostUrl = "http://10.250.1.88/zentaopms/www/index.php?m=bug&f=create&productID=1&branch=0&extra=moduleID=0";// bugè¡¨å•è¯·æ±‚
+	static String fileName = System.getProperty("user.dir") + "\\xml\\exported_issues.xml";
 	CloseableHttpClient httpclient;
 
 	static JDOMTest jt2 = new JDOMTest();
@@ -35,8 +35,8 @@ public class JDOMTest {
 
 	public void submitDefect(String product, String module, String openedBuild, String assignedTo, String title,
 			String severity, String steps) {
-		// µÇÂ¼
-		// ±ØĞë±£³ÖÍ¬Ò»¸öHttpClient
+		// ç™»å½•
+		// å¿…é¡»ä¿æŒåŒä¸€ä¸ªHttpClient
 		httpclient = HttpClients.createDefault();
 		HttpPost httppost = new HttpPost(loginPostUrl);
 		List<NameValuePair> pairs = new ArrayList<NameValuePair>();
@@ -47,7 +47,7 @@ public class JDOMTest {
 		try {
 			CloseableHttpResponse httpresponse = httpclient.execute(httppost);
 			httppost.releaseConnection();
-			// Ìá½»
+			// æäº¤
 			HttpPost httppost2 = new HttpPost(bugPostUrl);
 			List<NameValuePair> pairs2 = new ArrayList<NameValuePair>();
 			pairs2.add(new BasicNameValuePair("product", product));
@@ -69,7 +69,7 @@ public class JDOMTest {
 	}
 
 	public void parserXml(String fileName) {
-		// ½âÎöxml
+		// è§£æxml
 		SAXBuilder builder = new SAXBuilder();
 		try {
 			Document document = builder.build(fileName);
@@ -82,26 +82,26 @@ public class JDOMTest {
 				List issueInfo = issue.getChildren();
 				// System.out.println(issueInfo.size());//
 
-				// bug±íµ¥
+				// bugè¡¨å•
 				String product = "1";
-				String module = "0";// ËùÊôÄ£¿é
-				String openedBuild = "trunk"; // Ó°Ïì°æ±¾ºÅ
-				String assignedTo = "tester";// Ö¸ÅÉ¸ø
-				String title = ((Element) issueInfo.get(issueInfo.size() - 3)).getValue();// ±êÌâ
-				String severity = "4";// ÑÏÖØµÈ¼¶
-				String steps = "<p>[²½Öè]" + ((Element) issueInfo.get(issueInfo.size() - 2)).getValue() + "</p>" + "\n"
-						+ "<p>[½á¹û]" + ((Element) issueInfo.get(issueInfo.size() - 1)).getValue() + "</p>" + "\n"
-						+ "<p>[ÆÚÍû]</p>";
-				System.out.println("¿ªÊ¼Ìá½»µÚ" + (i + 1) + "¸öBug.");
+				String module = "0";// æ‰€å±æ¨¡å—
+				String openedBuild = "trunk"; // å½±å“ç‰ˆæœ¬å·
+				String assignedTo = "tester";// æŒ‡æ´¾ç»™
+				String title = ((Element) issueInfo.get(issueInfo.size() - 3)).getValue();// æ ‡é¢˜
+				String severity = "4";// ä¸¥é‡ç­‰çº§
+				String steps = "<p>[æ­¥éª¤]" + ((Element) issueInfo.get(issueInfo.size() - 2)).getValue() + "</p>" + "\n"
+						+ "<p>[ç»“æœ]" + ((Element) issueInfo.get(issueInfo.size() - 1)).getValue() + "</p>" + "\n"
+						+ "<p>[æœŸæœ›]</p>";
+				System.out.println("å¼€å§‹æäº¤ç¬¬" + (i + 1) + "ä¸ªBug.");
 
-				System.out.println("BugÃèÊö" + "\n" + ((Element) issueInfo.get(0)).getValue() + "\n"
+				System.out.println("Bugæè¿°" + "\n" + ((Element) issueInfo.get(0)).getValue() + "\n"
 						+ ((Element) issueInfo.get(issueInfo.size() - 3)).getValue() + "\n"
 						+ ((Element) issueInfo.get(issueInfo.size() - 2)).getValue() + "\n"
 						+ ((Element) issueInfo.get(issueInfo.size() - 1)).getValue());
 
-				// Ìáµ¥
+				// æå•
 				submitDefect(product, module, openedBuild, assignedTo, title, severity, steps);
-				System.out.println("µÚ" + (i + 1) + "¸öBugÌá½»Íê³É.");
+				System.out.println("ç¬¬" + (i + 1) + "ä¸ªBugæäº¤å®Œæˆ.");
 				System.out.println("------------------");
 			}
 
